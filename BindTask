@@ -1,0 +1,30 @@
+//avg by product name 
+
+var arr2 = [
+	{
+		name: "product_1",
+		price: 20
+	},
+	{
+		name: "product_2",
+		price: 25
+	},
+		{
+		name: "product_1",
+		price: 80
+	}
+];
+
+
+
+
+let groppedByName = arr2
+.reduce((accum, el) => {
+  accum[el.name] = accum[el.name] ? [...accum[el.name], el] : [el];
+  return accum;
+}, {});
+
+let res = Object.values(groppedByName)
+.map(gropArr => ({ name: gropArr[0].name, AVGPrice: gropArr.reduce((acum, currEl) => acum + currEl.price, 0 )/gropArr.length  }));
+
+console.log(res);
